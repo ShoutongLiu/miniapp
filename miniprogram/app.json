@@ -1,0 +1,40 @@
+{
+    "pages": [
+        "pages/playlist/playlist",
+        "pages/blog/blog",
+        "pages/profile/profile"
+    ],
+    "window": {
+        "backgroundColor": "#d43c33",
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#d43c33",
+        "navigationBarTitleText": "MyMusic",
+        "navigationBarTextStyle": "white"
+    },
+    "tabBar": {
+        "color": "#474747",
+        "selectedColor": "#d43c33",
+        "list": [{
+                "pagePath": "pages/playlist/playlist",
+                "text": "音乐",
+                "iconPath": "images/music.png",
+                "selectedIconPath": "images/music-s.png"
+            },
+            {
+                "pagePath": "pages/blog/blog",
+                "text": "发现",
+                "iconPath": "images/found.png",
+                "selectedIconPath": "images/found-s.png"
+            },
+            {
+                "pagePath": "pages/profile/profile",
+                "text": "我的",
+                "iconPath": "images/user.png",
+                "selectedIconPath": "images/user-s.png"
+            }
+        ]
+    },
+
+    "sitemapLocation": "sitemap.json",
+    "style": "v2"
+}
