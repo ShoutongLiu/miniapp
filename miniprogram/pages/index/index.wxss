@@ -3,7 +3,11 @@ view {
 }
 
 .swiper {
-    padding: 20rpx;
+    padding: 20rpx 30rpx;
+}
+
+.item {
+    height: 280rpx;
 }
 
 .img {
@@ -16,6 +20,6 @@ view {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    padding: 0 20rpx;
+    padding: 0 22rpx;
     flex-direction: row;
 }
