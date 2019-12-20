@@ -1,0 +1,8 @@
+<view class="list-container">
+    <image class="list-img" src="{{itemObj.picUrl}}" mode="aspectFit" lazy-load="true" />
+    <view class="count-view">
+        <text class="iconfont icon-play1"></text>
+        <text class="play-count">{{itemObj.playCount}}</text>
+    </view>
+    <view class="play-name">{{itemObj.name}}</view>
+</view>

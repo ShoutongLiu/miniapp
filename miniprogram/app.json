@@ -1,11 +1,11 @@
 {
     "pages": [
-        "pages/playlist/playlist",
+        "pages/index/index",
         "pages/blog/blog",
         "pages/profile/profile"
     ],
     "window": {
-        "backgroundColor": "#d43c33",
+        "backgroundColor": "#eee",
         "backgroundTextStyle": "light",
         "navigationBarBackgroundColor": "#d43c33",
         "navigationBarTitleText": "MyMusic",
@@ -15,7 +15,7 @@
         "color": "#474747",
         "selectedColor": "#d43c33",
         "list": [{
-                "pagePath": "pages/playlist/playlist",
+                "pagePath": "pages/index/index",
                 "text": "音乐",
                 "iconPath": "images/music.png",
                 "selectedIconPath": "images/music-s.png"

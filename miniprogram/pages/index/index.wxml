@@ -1,0 +1,16 @@
+<view class="container">
+    <view class="page-section swiper">
+        <swiper indicator-dots="{{swiper.indicatorDots}}" autoplay="{{swiper.autoplay}}" interval="{{swiper.interval}}" duration="{{swiper.duration}}" indicator-color="{{swiper.color}}" indicator-active-color="{{swiper.activeColor}}">
+            <block wx:for="{{banner}}" wx:key="id">
+                <swiper-item>
+                    <image class="img" src="{{item.url}}" mode="scaleToFill" lazy-load="true" />
+                </swiper-item>
+            </block>
+        </swiper>
+    </view>
+    <view class="play-list">
+        <block wx:for="{{playList}}" wx:key="id">
+            <play-list itemObj="{{item}}"></play-list>
+        </block>
+    </view>
+</view>
