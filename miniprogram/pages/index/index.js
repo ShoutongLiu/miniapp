@@ -85,7 +85,8 @@ Page({
      * 页面相关事件处理函数--监听用户下拉动作
      */
     onPullDownRefresh: function () {
-
+        this.setData({ playList: [] })
+        this.getPlayList()
     },
 
     /**
@@ -107,12 +108,14 @@ Page({
             name: 'music',
             data: {
                 start: this.data.playList.length,
-                count: MAX_LIMIT
+                count: MAX_LIMIT,
+                $url: 'playlist'
             }
         }).then(res => {
             this.setData({
                 playList: this.data.playList.concat(res.result.data)
             })
+            wx.stopPullDownRefresh()
             wx.hideLoading()
         })
     }

@@ -28,6 +28,14 @@ Component({
      * 组件的方法列表
      */
     methods: {
+        // 跳转歌曲列表页
+        goMusicList() {
+            wx.navigateTo(
+                {
+                    url: `../../pages/musiclist/musiclist?playlistId=${this.properties.itemObj.id}`
+                }
+            )
+        },
         // 转化数字的方法
         tranNum(count, num) {
             let numStr = count.toString().split('.')[0]
