@@ -1,4 +1,7 @@
 // pages/player/player.js
+let musiclist = []
+let playingIndex
+
 Page({
 
     /**
@@ -12,7 +15,9 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        console.log(options.playerId);
+        console.log(options)
+        playingIndex = options.index
+        musiclist = wx.getStorageSync('musiclist');
     },
 
     /**

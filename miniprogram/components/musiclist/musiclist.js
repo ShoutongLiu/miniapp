@@ -19,10 +19,10 @@ Component({
      */
     methods: {
         handleSelect(e) {
-            let playId = e.currentTarget.dataset.musicid
-            this.setData({ playingId: playId })
+            let curent = e.currentTarget.dataset
+            this.setData({ playingId: curent.musicid })
             wx.navigateTo({
-                url: `../../pages/player/player?playerId=${playId}`
+                url: `../../pages/player/player?playerId=${curent.musicid}&index=${curent.index}`
             });
         }
     }

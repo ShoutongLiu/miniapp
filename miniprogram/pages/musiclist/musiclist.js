@@ -35,7 +35,12 @@ Page({
                 }
             })
             wx.hideLoading();
+            this.setMusicList()
         })
+    },
+
+    setMusicList() {
+        wx.setStorageSync('musiclist', this.data.musicList);
     },
 
     /**
