@@ -13,6 +13,8 @@ Page({
     data: {
         picUrl: '',
         isPlaying: false, // false表示不播放，true表示正在播放
+        isLyricShow: false,  // 控制歌词显示
+        lyric: ''
     },
 
     /**
@@ -56,6 +58,25 @@ Page({
             backAudioManager.singer = music.ar[0].name
             this.setData({ isPlaying: true })
             wx.hideLoading()
+
+            // 获取歌词
+            wx.cloud.callFunction({
+                name: 'music',
+                data: {
+                    $url: 'lyric',
+                    musicId: musicId
+                }
+            }).then(res => {
+                console.log(res);
+                let lyricData = '暂无歌词'
+                const lrc = JSON.parse(res.result).lrc
+                if (lrc) {
+                    lyricData = lrc.lyric
+                }
+                this.setData({
+                    lyric: lyricData
+                })
+            })
         })
     },
     // 暂停播放事件
@@ -84,6 +105,12 @@ Page({
         }
         let prevSongId = musiclist[playingIndex].id
         this.loadMusicDetail(prevSongId)
+    },
+    // 歌词显示
+    showLyric() {
+        this.setData({
+            isLyricShow: !this.data.isLyricShow
+        })
     },
     /**
      * 生命周期函数--监听页面初次渲染完成

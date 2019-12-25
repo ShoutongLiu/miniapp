@@ -76,24 +76,27 @@ Component({
             })
 
             backAudioManager.onTimeUpdate(() => {
-                // 当前播放时间
-                const currentTime = backAudioManager.currentTime
-                // 总时间
-                duration = backAudioManager.duration
-                let curr_sec = currentTime.toString().split('.')[0]
-                if (curr_sec != currentSec) {
-                    const currentFmt = this.timeFormat(currentTime)
-                    this.setData({
-                        movableDis: (movableAreaWidth - movableViewWidth) * currentTime / duration,
-                        progress: currentTime / duration * 100,
-                        ['showTime.currentTime']: `${currentFmt.min}:${currentFmt.sec}`
-                    })
-                    currentSec = curr_sec
+                if (!isMoving) {
+                    // 当前播放时间
+                    const currentTime = backAudioManager.currentTime
+                    // 总时间
+                    duration = backAudioManager.duration
+                    let curr_sec = currentTime.toString().split('.')[0]
+                    if (curr_sec != currentSec) {
+                        const currentFmt = this.timeFormat(currentTime)
+                        this.setData({
+                            movableDis: (movableAreaWidth - movableViewWidth) * currentTime / duration,
+                            progress: currentTime / duration * 100,
+                            ['showTime.currentTime']: `${currentFmt.min}:${currentFmt.sec}`
+                        })
+                        currentSec = curr_sec
+                    }
                 }
             })
 
             backAudioManager.onEnded(() => {
-
+                // 抛出事件自动播放下一首
+                this.triggerEvent('musicEnd')
             })
 
             backAudioManager.onError((err) => {
@@ -125,7 +128,6 @@ Component({
         },
         // 滑动事件
         handleChange(e) {
-            console.log(e);
             // 判断是是否是拖动事件
             if (e.detail.source == 'touch') {
                 this.data.progress = e.detail.x / (movableAreaWidth - movableViewWidth) * 100
@@ -137,7 +139,6 @@ Component({
         onTouchEnd() {
             let currentTime = Math.floor(backAudioManager.currentTime)
             let currentFmt = this.timeFormat(currentTime)
-            console.log(currentFmt);
             this.setData({
                 progress: this.data.progress,
                 movableDis: this.data.movableDis,

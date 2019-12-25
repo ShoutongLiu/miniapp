@@ -1,0 +1,7 @@
+<scroll-view class="lrc-scroll" scroll-y hidden="{{isLyricShow}}">
+    <view class="lrc-panel">
+        <block wx:for="{{lrcList}}" wx:key="item">
+            <view class="lrc-text">{{item.lrc}}</view>
+        </block>
+    </view>
+</scroll-view>
