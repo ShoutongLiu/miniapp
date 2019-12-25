@@ -5,6 +5,10 @@
     <view class="player-disc {{isPlaying ? 'play' : ''}}">
         <image class="player-img rotation {{isPlaying ? '' : 'rotation-paused'}}" src="{{picUrl}}" mode="aspectFill" />
     </view>
+    <!-- 进度条 -->
+    <view class="progress-bar">
+        <progress-bar />
+    </view>
     <!-- 控制面板 -->
     <view class="control">
         <text class="iconfont icon-shangyishoushangyige" bindtap="onPrev"></text>
