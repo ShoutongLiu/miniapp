@@ -5,7 +5,7 @@ cloud.init()
 
 // 云函数入口函数
 exports.main = async (event, context) => {
-    return await cloud.database().collection('playlist')
+    let listData = await cloud.database().collection('playlist')
         .skip(event.start)
         .limit(event.count)
         .orderBy('createTime', 'desc')
@@ -13,4 +13,5 @@ exports.main = async (event, context) => {
         .then(res => {
             return res
         })
+    return listData
 }
