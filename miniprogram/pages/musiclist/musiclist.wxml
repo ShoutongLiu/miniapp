@@ -1,0 +1,14 @@
+<view class='detail-container' style='background: url({{listInfo.backgroundImg}}) no-repeat  top/cover'></view>
+<view class='detail-mask'></view>
+<view class='detail-info'>
+    <image src="{{listInfo.backgroundImg}}" class='detail-img' mode="aspectFill"></image>
+    <view class='detail'>
+        <view class='detail-nm'>{{listInfo.name}}</view>
+        <view class="creator">
+            <image class="avatar" src="{{listInfo.avatar}}" mode="aspectFill"></image>
+            <text class="nickname">{{listInfo.nickName}}</text>
+        </view>
+        <view class="desc">{{listInfo.desc}}</view>
+    </view>
+</view>
+<music-list musicList="{{musicList}}" class="list"></music-list>

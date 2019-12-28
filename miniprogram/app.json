@@ -2,7 +2,9 @@
     "pages": [
         "pages/index/index",
         "pages/blog/blog",
-        "pages/profile/profile"
+        "pages/profile/profile",
+        "pages/musiclist/musiclist",
+        "pages/player/player"
     ],
     "window": {
         "backgroundColor": "#eee",
@@ -34,7 +36,7 @@
             }
         ]
     },
-
+    "requiredBackgroundModes": ["audio"],
     "sitemapLocation": "sitemap.json",
     "style": "v2"
 }

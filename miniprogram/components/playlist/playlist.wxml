@@ -1,4 +1,4 @@
-<view class="list-container">
+<view class="list-container" bindtap="goMusicList">
     <image class="list-img" src="{{itemObj.picUrl}}" mode="aspectFit" lazy-load="true" />
     <view class="count-view">
         <text class="iconfont icon-play1"></text>
