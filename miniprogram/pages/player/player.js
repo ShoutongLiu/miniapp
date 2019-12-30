@@ -4,6 +4,7 @@ let musiclist = []
 let playingIndex = 0
 // 全局唯一背景音频管理器
 let backAudioManager = wx.getBackgroundAudioManager();
+const app = getApp(); // 全局实例
 
 Page({
 
@@ -39,7 +40,7 @@ Page({
             picUrl: music.al.picUrl,
             isPlaying: false
         })
-
+        app.setPlayingId(musicId)   // 设置当前播放歌曲的id
         wx.showLoading()
 
         // 获取歌曲的url链接
@@ -116,6 +117,16 @@ Page({
     timeUpdate(event) {
         // 选中歌词组件
         this.selectComponent('.lyric').update(event.detail.currentTime)
+    },
+    onPlay() {
+        this.setData({
+            isPlaying: true
+        })
+    },
+    onPause() {
+        this.setData({
+            isPlaying: false
+        })
     },
     /**
      * 生命周期函数--监听页面初次渲染完成

@@ -51,6 +51,7 @@ Component({
         bindBgmEvent() {
             backAudioManager.onPlay(() => {
                 isMoving = false
+                this.triggerEvent('musicPlay')
             })
 
             backAudioManager.onStop(() => {
@@ -58,7 +59,7 @@ Component({
             })
 
             backAudioManager.onPause(() => {
-
+                this.triggerEvent('musicPause')
             })
             // 监听音频加载事件
             backAudioManager.onWaiting(() => {
