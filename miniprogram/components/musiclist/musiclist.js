@@ -19,7 +19,7 @@ Component({
         // 页面显示的时候获取当前播放的id
         show() {
             this.setData({
-                playingId: app.getPlayingId()
+                playingId: parseInt(app.getPlayingId())
             })
         }
     },

@@ -1,2 +1,11 @@
-<!--miniprogram/pages/blog/blog.wxml-->
-<text>miniprogram/pages/blog/blog.wxml</text>
+<view class="blog-container">
+    <!-- 头部 -->
+    <view class="header">
+        <view class="publish-container" bind:tap="onPublish">
+            <i class="iconfont icon-edit"></i>
+        </view>
+        <view class="search-container">
+            <x-search />
+        </view>
+    </view>
+</view>

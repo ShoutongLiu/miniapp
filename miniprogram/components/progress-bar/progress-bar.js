@@ -12,11 +12,14 @@ Component({
      * 组件的属性列表
      */
     properties: {
-
+        isSame: Boolean
     },
     // 生命周期函数
     lifetimes: {
         ready() {
+            if (this.properties.isSame && this.data.showTime.totalTime == "00:00") {
+                this.setTime()
+            }
             this.getMovableDis()
             this.bindBgmEvent()
         }

@@ -15,7 +15,8 @@ Page({
         picUrl: '',
         isPlaying: false, // false表示不播放，true表示正在播放
         isLyricShow: false,  // 控制歌词显示
-        lyric: ''
+        lyric: '',
+        isSame: false,  // 判断是否是播放 同一首
     },
 
     /**
@@ -29,8 +30,17 @@ Page({
     },
 
     loadMusicDetail(musicId) {
-        // 播放前前先停止歌曲
-        backAudioManager.stop()
+        if (musicId == app.getPlayingId()) {
+            this.setData({ isSame: true })
+        } else {
+            this.setData({ isSame: false })
+        }
+
+        if (!this.data.isSame) {
+            // 播放前前先停止歌曲
+            backAudioManager.stop()
+        }
+
         let music = musiclist[playingIndex]
         wx.setNavigationBarTitle({
             title: music.name,
@@ -53,10 +63,18 @@ Page({
         }).then(res => {
             console.log(res);
             let songData = JSON.parse(res.result)
-            backAudioManager.title = music.name
-            backAudioManager.src = songData.data[0].url
-            backAudioManager.coverImgUrl = music.al.picUrl
-            backAudioManager.singer = music.ar[0].name
+            if (songData.data[0].url === null) {
+                wx.showToast({
+                    title: '无权限播放'
+                });
+                return
+            }
+            if (!this.data.isSame) {
+                backAudioManager.title = music.name
+                backAudioManager.src = songData.data[0].url
+                backAudioManager.coverImgUrl = music.al.picUrl
+                backAudioManager.singer = music.ar[0].name
+            }
             this.setData({ isPlaying: true })
             wx.hideLoading()
 

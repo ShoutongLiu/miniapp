@@ -16,7 +16,8 @@
     "tabBar": {
         "color": "#474747",
         "selectedColor": "#d43c33",
-        "list": [{
+        "list": [
+            {
                 "pagePath": "pages/index/index",
                 "text": "音乐",
                 "iconPath": "images/music.png",
@@ -36,7 +37,8 @@
             }
         ]
     },
-    "requiredBackgroundModes": ["audio"],
-    "sitemapLocation": "sitemap.json",
-    "style": "v2"
+    "requiredBackgroundModes": [
+        "audio"
+    ],
+    "sitemapLocation": "sitemap.json"
 }
