@@ -1,0 +1,6 @@
+<view class="modal" hidden="{{!modalShow}}">
+    <view class="panel">
+        <i class="iconfont icon-cuo" bindtap="onClose"></i>
+        <slot name="content"></slot>
+    </view>
+</view>

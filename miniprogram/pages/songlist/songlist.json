@@ -1,0 +1,7 @@
+{
+    "usingComponents": {
+        "play-list": "/components/playlist/playlist"
+    },
+    "navigationBarTitleText": "歌单广场",
+    "enablePullDownRefresh": true
+}

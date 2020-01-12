@@ -29,7 +29,7 @@
 
 .icon-sousuo-copy {
     position: absolute;
-    font-size: 40rpx;
+    font-size: 50rpx;
     color: #9f9f9f;
     top: 50%;
     transform: translate(16rpx, -50%);

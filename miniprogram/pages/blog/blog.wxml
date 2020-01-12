@@ -8,4 +8,6 @@
             <x-search />
         </view>
     </view>
+    <!-- 底部弹窗 -->
+    <login modalShow="{{modalShow}}"></login>
 </view>

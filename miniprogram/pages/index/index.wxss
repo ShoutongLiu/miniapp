@@ -2,8 +2,12 @@ view {
     box-sizing: border-box;
 }
 
+.container {
+    padding: 0 24rpx;
+}
+
 .swiper {
-    padding: 20rpx 30rpx;
+    padding: 20rpx 0;
 }
 
 .item {
@@ -20,6 +24,69 @@ view {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    padding: 0 22rpx;
     flex-direction: row;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20rpx 0;
+}
+
+.title {
+    font-weight: bold;
+}
+
+.more {
+    font-size: 24rpx;
+    padding: 6rpx 20rpx;
+    border: 1px solid #f5f5f5;
+    border-radius: 30rpx;
+}
+
+.options {
+    display: flex;
+    justify-content: space-between;
+    padding: 20rpx 0;
+}
+
+.options .opt-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.options .circle {
+    width: 86rpx;
+    height: 86rpx;
+    border-radius: 50%;
+    background-color: #c20c0c;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    position: relative;
+}
+
+.options .iconfont {
+    font-size: 40rpx;
+}
+
+.options .iconfont.icon-rili1 {
+    font-size: 46rpx;
+}
+
+.options .text {
+    margin-top: 20rpx;
+    font-size: 24rpx;
+}
+
+.options .date {
+    position: absolute;
+    top: 58%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 18rpx;
 }
