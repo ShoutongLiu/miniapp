@@ -1,0 +1,7 @@
+<view class="container">
+    <view class="play-list">
+        <block wx:for="{{playList}}" wx:key="id">
+            <play-list itemObj="{{item}}"></play-list>
+        </block>
+    </view>
+</view>

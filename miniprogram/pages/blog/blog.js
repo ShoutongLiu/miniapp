@@ -4,7 +4,9 @@ Page({
     /**
  * 页面的初始数据
  */
-    data: {}
+    data: {
+        modalShow: false       // 控制底部弹出层
+    }
 
     ,
 
@@ -15,7 +17,25 @@ Page({
 
     ,
 
-    onPublish() { }
+    onPublish() {
+        wx.getSetting({
+            success: res => {
+                if (res.authSetting['scope.userInfo']) {
+                    wx.getUserInfo({
+                        success: res => {
+                            console.log(res);
+                        },
+                        fail: (err) => {
+                            console.log(err);
+                        },
+                    });
+                } else {
+                    this.setData({ modalShow: true })
+                }
+            }
+        });
+
+    }
 
     ,
 

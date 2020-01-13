@@ -20,6 +20,13 @@ exports.main = async (event, context) => {
             })
     })
 
+    app.router('banner', async (ctx, next) => {
+        ctx.body = await rp(BASE_URL + '/banner')
+            .then(res => {
+                return JSON.parse(res)
+            })
+    })
+
     app.router('musiclist', async (ctx, next) => {
         const ID = parseInt(event.playlistId)
         ctx.body = await rp(BASE_URL + `/playlist/detail?id=${ID}`)

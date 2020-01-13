@@ -1,13 +1,30 @@
 <view class="container">
     <view class="page-section swiper">
         <swiper class="item" indicator-dots="{{swiper.indicatorDots}}" autoplay="{{swiper.autoplay}}" interval="{{swiper.interval}}" duration="{{swiper.duration}}" indicator-color="{{swiper.color}}" indicator-active-color="{{swiper.activeColor}}">
-            <block wx:for="{{banner}}" wx:key="id">
+            <block wx:for="{{banner}}" wx:key="_id">
                 <swiper-item>
-                    <image class="img" src="{{item.url}}" mode="scaleToFill" lazy-load="true" />
+                    <image class="img" src="{{item.imageUrl}}" mode="scaleToFill" lazy-load="true" />
                 </swiper-item>
             </block>
         </swiper>
     </view>
+    <!-- 圆形选项 -->
+    <view class="options">
+        <block wx:for="{{options}}" wx:key="class">
+            <view class="opt-item">
+                <view class="circle">
+                    <i class="iconfont {{item.class}}"></i>
+                    <text class="date" wx:if="{{item.class==='icon-rili1'}}">{{date}}</text>
+                </view>
+                <view class="text">{{item.text}}</view>
+            </view>
+        </block>
+    </view>
+    <view class="header">
+        <view class="title">推荐歌单</view>
+        <view class="more" bindtap="goMore">歌单广场</view>
+    </view>
+    <!-- 歌单列表 -->
     <view class="play-list">
         <block wx:for="{{playList}}" wx:key="id">
             <play-list itemObj="{{item}}"></play-list>

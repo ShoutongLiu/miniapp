@@ -1,49 +1,28 @@
-const MAX_LIMIT = 12
+const MAX_LIMIT = 9
 
 Page({
     /**
      * 页面的初始数据
      */
     data: {
-        banner: [
-            {
-                url: 'http://p1.music.126.net/uCDEWxc7VlFruj8whr7Qvg==/109951164567869837.jpg',
-                id: 1,
-            },
-            {
-                url: 'http://p1.music.126.net/i9TIO_h2tJrX75y1qGadEw==/109951164568148355.jpg',
-                id: 2,
-            },
-            {
-                url: 'http://p1.music.126.net/Hj7v410EbtcbynSqKuEfOQ==/109951164568090756.jpg',
-                id: 3,
-            },
-            {
-                url: 'http://p1.music.126.net/mKgAjIRhSMeTuKdBhAhQrw==/109951164568087464.jpg',
-                id: 4,
-            },
-            {
-                url: 'http://p1.music.126.net/3xHJw1WjLomtv5bofQqIbA==/109951164568157618.jpg',
-                id: 5,
-            },
-            {
-                url: 'http://p1.music.126.net/bOu63UH-RzfHThs8YRKdxg==/109951164568097693.jpg',
-                id: 6,
-            },
-            {
-                url: 'http://p1.music.126.net/koF-9bVY-ZYVMCpGtumJBg==/109951164568097821.jpg',
-                id: 7
-            }
-        ],
+        banner: [],
         swiper: {
             indicatorDots: true,
             autoplay: true,
-            interval: 3000,
+            interval: 4000,
             duration: 500,
             color: '#eee',
             activeColor: '#d43c33'
         },
-        playList: []
+        playList: [],
+        options: [
+            { text: '每日推荐', class: 'icon-rili1' },
+            { text: '歌单', class: 'icon-gedan' },
+            { text: '排行榜', class: 'icon-paihangbangxuanzhong' },
+            { text: '电台', class: 'icon-diantai' },
+            { text: '直播', class: 'icon-shexiangtou' }
+        ],
+        date: ''
     },
 
     /**
@@ -51,6 +30,8 @@ Page({
      */
     onLoad: function (options) {
         this.getPlayList()
+        this.getBanner()
+        this.setData({ date: new Date().getDate() })
     },
 
     /**
@@ -93,7 +74,6 @@ Page({
      * 页面上拉触底事件的处理函数
      */
     onReachBottom: function () {
-        this.getPlayList()
     },
 
     /**
@@ -102,21 +82,36 @@ Page({
     onShareAppMessage: function () {
 
     },
+    // 获取banner图
+    getBanner() {
+        wx.cloud.callFunction({
+            name: 'music',
+            data: {
+                $url: 'banner'
+            }
+        }).then(res => {
+            this.setData({ banner: res.result.banners })
+        })
+    },
+    // 获取歌单
     getPlayList() {
         wx.showLoading()
         wx.cloud.callFunction({
             name: 'music',
             data: {
-                start: this.data.playList.length,
+                start: 0,
                 count: MAX_LIMIT,
                 $url: 'playlist'
             }
         }).then(res => {
             this.setData({
-                playList: this.data.playList.concat(res.result.data)
+                playList: res.result.data
             })
             wx.stopPullDownRefresh()
             wx.hideLoading()
         })
+    },
+    goMore() {
+        wx.navigateTo({ url: '../songlist/songlist' });
     }
 })
