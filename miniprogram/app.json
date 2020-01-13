@@ -5,7 +5,8 @@
     "pages/profile/profile",
     "pages/musiclist/musiclist",
     "pages/player/player",
-    "pages/songlist/songlist"
+    "pages/songlist/songlist",
+    "pages/blogedit/blogedit"
   ],
   "window": {
     "backgroundColor": "#eee",

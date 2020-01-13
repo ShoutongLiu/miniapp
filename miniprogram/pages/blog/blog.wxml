@@ -9,5 +9,5 @@
         </view>
     </view>
     <!-- 底部弹窗 -->
-    <login modalShow="{{modalShow}}"></login>
+    <login modalShow="{{modalShow}}" bind:loginSuccess="loginSuccess" bind:loginFail="loginFail"></login>
 </view>

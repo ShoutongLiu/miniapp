@@ -23,7 +23,7 @@ Page({
                 if (res.authSetting['scope.userInfo']) {
                     wx.getUserInfo({
                         success: res => {
-                            console.log(res);
+                            this.loginSuccess({ detail: res.userInfo })
                         },
                         fail: (err) => {
                             console.log(err);
@@ -35,9 +35,19 @@ Page({
             }
         });
 
-    }
-
-    ,
+    },
+    loginSuccess(e) {
+        let detail = e.detail
+        wx.navigateTo({
+            url: `/pages/blogedit/blogedit?name=${detail.nickName}&avatar=${detail.avatarUrl}`,
+        });
+    },
+    loginFail() {
+        wx.showToast({
+            title: '授权才能发布',
+            icon: 'none'
+        });
+    },
 
     /**
  * 生命周期函数--监听页面初次渲染完成
