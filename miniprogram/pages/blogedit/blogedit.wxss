@@ -43,10 +43,10 @@
 .img-warp {
     width: 220rpx;
     height: 220rpx;
-    margin-right: 10rpx;
-    margin-bottom: 10rpx;
+    margin-bottom: 20rpx;
+    margin-right: 12rpx;
+    border: 1px solid #cbd1d7;
     position: relative;
-    overflow: hidden;
     text-align: center;
 }
 
@@ -66,10 +66,8 @@
 
 .icon-shanchu {
     position: absolute;
-    top: 0;
-    right: 0;
-    width: 40rpx;
-    height: 40rpx;
+    top: -14rpx;
+    right: -12rpx;
     background-color: #000;
     opacity: 0.4;
     color: #fff;
@@ -77,6 +75,7 @@
     line-height: 40rpx;
     font-size: 38rpx;
     font-weight: bolder;
+    border-radius: 50%;
 }
 
 .image {

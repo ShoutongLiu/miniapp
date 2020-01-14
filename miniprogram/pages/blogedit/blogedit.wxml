@@ -1,7 +1,15 @@
 <view class="container">
     <textarea class="content" placeholder="分享新鲜事..." bindinput="onInput" maxlength="140" auto-focus bindfocus="onFocus" bindblur="onBlur"></textarea>
     <view class="img-list">
-        <view class="img-warp selectphoto">
+        <!-- 显示图片 -->
+        <block wx:for="{{images}}" wx:key="path">
+            <view class="img-warp">
+                <image class="image" src="{{item}}" mode="aspectFill" bindtap="onPriview" data-src="{{item}}"></image>
+                <i class="iconfont icon-shanchu" bindtap="onDelete" data-index="{{index}}"></i>
+            </view>
+        </block>
+        <!-- 选择图片 -->
+        <view class="img-warp selectphoto" bindtap="onChooseImg" hidden="{{images.length >= 9}}">
             <i class="iconfont icon-jiahao"></i>
         </view>
     </view>
