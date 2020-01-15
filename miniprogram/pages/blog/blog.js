@@ -5,7 +5,8 @@ Page({
  * 页面的初始数据
  */
     data: {
-        modalShow: false       // 控制底部弹出层
+        modalShow: false,       // 控制底部弹出层
+        blogList: []
     }
 
     ,
@@ -13,9 +14,23 @@ Page({
     /**
  * 生命周期函数--监听页面加载
  */
-    onLoad: function (options) { }
+    onLoad: function () {
+        this.getBlogList()
+    },
 
-    ,
+    getBlogList() {
+        wx.cloud.callFunction({
+            name: 'blog',
+            data: {
+                $url: 'blog-list',
+                start: 0,
+                count: 10
+            }
+        }).then(res => {
+            console.log(res);
+            this.setData({ blogList: this.data.blogList.concat(res.result.data) })
+        })
+    },
 
     onPublish() {
         wx.getSetting({

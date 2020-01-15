@@ -1,5 +1,10 @@
 const MAX_NUM = 140         // 最大输入字数
 const MAX_IMG_NUM = 9       // 最大上传图片
+const db = wx.cloud.database()
+
+let content = ''
+let userInfo = {}
+
 Page({
 
     /**
@@ -16,6 +21,7 @@ Page({
      */
     onLoad: function (options) {
         console.log(options);
+        userInfo = options
     },
 
     onInput(e) {
@@ -24,6 +30,7 @@ Page({
             wordsNum = `最大输入字数${MAX_NUM}`
         }
         this.setData({ wordsNum })
+        content = e.detail.value
     },
     // 获取焦点
     onFocus(e) {
@@ -70,6 +77,68 @@ Page({
             current: url,
             urls: this.data.images
         });
+    },
+    // 发布事件
+    send() {
+        if (content.trim() === '') {
+            wx.showToast({
+                title: '请输入内容',
+                icon: 'none'
+            });
+            return
+        }
+        wx.showLoading({
+            title: '发布中...'
+        });
+        let promiseArr = []
+        let fileds = []
+        // 图片上传到云存储
+        for (let i = 0; i < this.data.images.length; i++) {
+            let p = new Promise((resolve, reject) => {
+                let item = this.data.images[i]
+                // 获取文件拓展名
+                let suffix = /\.\w+$/.exec(item)[0]
+                // 调用上传云存储函数(异步)
+                wx.cloud.uploadFile({
+                    cloudPath: 'blog/' + Date.now() + '-' + Math.random() * 10000000 + suffix,
+                    filePath: item,
+                    success(res) {
+                        fileds = fileds.concat(res.fileID)
+                        resolve()
+                    },
+                    file(err) {
+                        console.log(err);
+                        reject()
+                    }
+                })
+            })
+            promiseArr.push(p)
+        }
+        // 所有图片上传完后存入数据库
+        Promise.all(promiseArr).then(res => {
+            db.collection('blog').add({
+                data: {
+                    ...userInfo,
+                    content,
+                    imgs: fileds,
+                    createTime: db.serverDate()  // 服务端时间
+                }
+            }).then(res => {
+                console.log(res);
+                wx.showToast({
+                    title: '发布成功'
+                });
+                wx.hideLoading();
+                // 返回上一页面
+                wx.navigateBack();
+            }).catch(err => {
+                wx.showToast({
+                    title: err.errMsg,
+                    icon: 'none',
+                });
+                wx.hideLoading();
+            })
+        })
     },
     /**
      * 生命周期函数--监听页面初次渲染完成

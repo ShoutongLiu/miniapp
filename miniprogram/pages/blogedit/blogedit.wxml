@@ -16,5 +16,5 @@
 </view>
 <view class="footer" style="buttom:{{buttomVal}}rpx">
     <text class="words-num">{{wordsNum}}</text>
-    <button class="send-btn">发布</button>
+    <button class="send-btn" bindtap="send">发布</button>
 </view>
