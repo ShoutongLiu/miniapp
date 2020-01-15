@@ -1,7 +1,8 @@
 {
     "usingComponents": {
         "x-search": "../../components/search/search",
-        "login": "../../components/login/login"
+        "login": "../../components/login/login",
+        "blog-list": "../../components/bolg-list/blog-list"
     },
     "navigationBarTitleText": "发现"
 }

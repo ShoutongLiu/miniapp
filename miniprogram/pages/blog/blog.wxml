@@ -8,6 +8,14 @@
             <x-search />
         </view>
     </view>
+    <!-- 博客列表展示 -->
+    <view class="blog-list">
+        <block wx:for="{{blogList}}" wx:key="_id">
+            <view class="blog-panel">
+                <blog-list blog="{{item}}"></blog-list>
+            </view>
+        </block>
+    </view>
     <!-- 底部弹窗 -->
     <login modalShow="{{modalShow}}" bind:loginSuccess="loginSuccess" bind:loginFail="loginFail"></login>
 </view>
