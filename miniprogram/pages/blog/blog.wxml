@@ -5,14 +5,14 @@
             <i class="iconfont icon-edit"></i>
         </view>
         <view class="search-container">
-            <x-search />
+            <x-search bind:search="onSearch" />
         </view>
     </view>
     <!-- 博客列表展示 -->
     <view class="blog-list">
         <block wx:for="{{blogList}}" wx:key="_id">
             <view class="blog-panel">
-                <blog-list blog="{{item}}"></blog-list>
+                <blog-list blog="{{item}}" bindtap="goDetail" data-blogid="{{item._id}}"></blog-list>
             </view>
         </block>
     </view>

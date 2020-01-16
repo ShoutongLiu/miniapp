@@ -14,7 +14,18 @@ exports.main = async (event, context) => {
     const app = new TcbRouter({ event })
 
     app.router('blog-list', async (ctx, next) => {
-        let blogData = await blogCollection.skip(event.start)
+        const keyWord = event.keyWord
+        let s = {}
+        if (keyWord.trim() !== '') {
+            s = {
+                content: new db.RegExp({
+                    regexp: keyWord,
+                    options: 'i'
+                })
+            }
+        }
+
+        let blogData = await blogCollection.where(s).skip(event.start)
             .limit(event.count)
             .orderBy('createTime', 'desc').get()
 

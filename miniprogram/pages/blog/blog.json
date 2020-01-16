@@ -4,5 +4,6 @@
         "login": "../../components/login/login",
         "blog-list": "../../components/bolg-list/blog-list"
     },
-    "navigationBarTitleText": "发现"
+    "navigationBarTitleText": "发现",
+    "enablePullDownRefresh": true
 }

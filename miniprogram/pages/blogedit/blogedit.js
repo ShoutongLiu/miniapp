@@ -88,7 +88,8 @@ Page({
             return
         }
         wx.showLoading({
-            title: '发布中...'
+            title: '发布中...',
+            mask: true
         });
         let promiseArr = []
         let fileds = []
@@ -129,8 +130,12 @@ Page({
                     title: '发布成功'
                 });
                 wx.hideLoading();
-                // 返回上一页面
+                // 返回上一页面, 并刷新
                 wx.navigateBack();
+                let pages = getCurrentPages();
+                const prevPage = pages[pages.length - 2]
+                prevPage.onPullDownRefresh()
+
             }).catch(err => {
                 wx.showToast({
                     title: err.errMsg,
