@@ -34,6 +34,7 @@ Page({
         }).then(res => {
             this.setData({ blogList: this.data.blogList.concat(res.result.data) })
             wx.hideLoading();
+            wx.stopPullDownRefresh()
         })
     },
 

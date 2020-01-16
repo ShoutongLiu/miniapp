@@ -72,7 +72,6 @@ Component({
         },
         // 通过事件获取当前播放时间
         update(currentTime) {
-            console.log(currentTime);
             let lrcList = this.data.lrcList
             if (lrcList.length === 0) {
                 return

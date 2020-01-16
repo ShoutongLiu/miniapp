@@ -13,7 +13,6 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        console.log(options);
         wx.showLoading();
         wx.cloud.callFunction({
             name: 'music',
@@ -22,7 +21,6 @@ Page({
                 $url: 'musiclist'
             }
         }).then(res => {
-            console.log(res);
             let musicDetail = res.result.playlist
             this.setData({
                 musicList: musicDetail.tracks,

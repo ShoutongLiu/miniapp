@@ -23,7 +23,6 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        console.log(options)
         playingIndex = options.index
         musiclist = wx.getStorageSync('musiclist');
         this.loadMusicDetail(options.playerId)
@@ -61,7 +60,6 @@ Page({
                 musicId: musicId
             }
         }).then(res => {
-            console.log(res);
             let songData = JSON.parse(res.result)
             if (songData.data[0].url === null) {
                 wx.showToast({
@@ -86,7 +84,6 @@ Page({
                     musicId: musicId
                 }
             }).then(res => {
-                console.log(res);
                 let lyricData = '暂无歌词'
                 const lrc = JSON.parse(res.result).lrc
                 if (lrc) {
