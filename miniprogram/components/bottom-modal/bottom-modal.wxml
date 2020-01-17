@@ -2,5 +2,6 @@
     <view class="panel">
         <i class="iconfont icon-cuo" bindtap="onClose"></i>
         <slot name="content"></slot>
+        <slot name="comment"></slot>
     </view>
 </view>

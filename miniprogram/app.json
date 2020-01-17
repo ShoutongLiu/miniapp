@@ -7,7 +7,8 @@
     "pages/player/player",
     "pages/songlist/songlist",
     "pages/blogedit/blogedit",
-    "pages/blog-detail/blog-detail"
+    "pages/blog-detail/blog-detail",
+    "pages/blog-comment/blog-comment"
   ],
   "window": {
     "backgroundColor": "#eee",

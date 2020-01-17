@@ -1,6 +1,8 @@
 {
-	"miniprogramRoot": "miniprogram/",
-	"cloudfunctionRoot": "cloudfunctions/",
+	"description": "项目配置文件",
+	"packOptions": {
+		"ignore": []
+	},
 	"setting": {
 		"urlCheck": false,
 		"es6": true,
@@ -21,12 +23,20 @@
 			"outputPath": ""
 		}
 	},
+	"compileType": "miniprogram",
+	"libVersion": "2.10.0",
 	"appid": "wxd5f831f53c4cc72b",
 	"projectname": "myMusic",
-	"libVersion": "2.8.1",
-	"simulatorType": "wechat",
-	"simulatorPluginLibVersion": {},
+	"miniprogramRoot": "miniprogram/",
+	"cloudfunctionRoot": "cloudfunctions/",
 	"cloudfunctionTemplateRoot": "cloudfunctionTemplate",
+	"watchOptions": {
+		"ignore": []
+	},
+	"debugOptions": {
+		"hidedInDevtools": []
+	},
+	"scripts": {},
 	"condition": {
 		"search": {
 			"current": -1,
@@ -48,7 +58,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
+			"current": 4,
 			"list": [
 				{
 					"id": -1,
@@ -79,19 +89,127 @@
 				},
 				{
 					"id": -1,
-<<<<<<< HEAD
 					"name": "pages/blog/blog",
 					"pathName": "pages/blog/blog",
-=======
-					"name": "pages/index/index",
-					"pathName": "pages/index/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 5,
+					"name": "pages/blogedit/blogedit",
+					"pathName": "pages/blogedit/blogedit",
+					"query": "name=桐先生&avatar=https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIwsLUm5…K0y8f0sfrTqibQCvpNr6oT9klfvDcG63566NZUqhCMoUA/132",
 					"scene": null
 				},
 				{
 					"id": -1,
-					"name": "pages/songlist/songlist",
-					"pathName": "pages/songlist/songlist",
->>>>>>> 73dabb6e66c28c83968c1e821a7e0e857d9282ef
+					"name": "pages/blogedit/blogedit",
+					"pathName": "pages/blogedit/blogedit",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/blogedit/blogedit",
+					"pathName": "pages/blogedit/blogedit",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/blogedit/blogedit",
+					"pathName": "pages/blogedit/blogedit",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/blogedit/blogedit",
+					"pathName": "pages/blogedit/blogedit",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/blogedit/blogedit",
+					"pathName": "pages/blogedit/blogedit",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/blogedit/blogedit",
+					"pathName": "pages/blogedit/blogedit",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/blogedit/blogedit",
+					"pathName": "pages/blogedit/blogedit",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/blogedit/blogedit",
+					"pathName": "pages/blogedit/blogedit",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/blogedit/blogedit",
+					"pathName": "pages/blogedit/blogedit",
+					"query": "name=tom$avatar=245",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/blogedit/blogedit",
+					"pathName": "pages/blogedit/blogedit",
+					"query": "name=tom$avatar=245",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/blogedit/blogedit",
+					"pathName": "pages/blogedit/blogedit",
+					"query": "name=tom$avatar=245",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/blogedit/blogedit",
+					"pathName": "pages/blogedit/blogedit",
+					"query": "name=tom$avatar=245",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/blogedit/blogedit",
+					"pathName": "pages/blogedit/blogedit",
+					"query": "name=tom$avatar=245",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/blogedit/blogedit",
+					"pathName": "pages/blogedit/blogedit",
+					"query": "name=tom$avatar=245",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/blogedit/blogedit",
+					"pathName": "pages/blogedit/blogedit",
+					"query": "name=tom$avatar=245",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/blogedit/blogedit",
+					"pathName": "pages/blogedit/blogedit",
+					"query": "name=tom$avatar=245",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/blogedit/blogedit",
+					"pathName": "pages/blogedit/blogedit",
+					"query": "name=tom$avatar=245",
 					"scene": null
 				}
 			]
