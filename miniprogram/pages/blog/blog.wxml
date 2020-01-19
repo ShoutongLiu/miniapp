@@ -14,7 +14,7 @@
             <view class="blog-panel">
                 <blog-list blog="{{item}}" bindtap="goDetail" data-blogid="{{item._id}}"></blog-list>
                 <!-- 评论分享 -->
-                <blog-ctrl blogId="{{item._id}}"></blog-ctrl>
+                <blog-ctrl blogId="{{item._id}}" blog="{{item}}"></blog-ctrl>
             </view>
         </block>
     </view>

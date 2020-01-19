@@ -73,7 +73,7 @@ Page({
     goDetail(e) {
         let id = e.target.dataset.blogid
         wx.navigateTo({
-            url: `/pages/blog-detail/blog-detail?blogid=${id}`
+            url: `/pages/blog-comment/blog-comment?blogId=${id}`
         });
     },
 
@@ -99,9 +99,7 @@ Page({
     /**
  * 生命周期函数--监听页面隐藏
  */
-    onHide: function () { }
-
-    ,
+    onHide: function () { },
 
     /**
  * 生命周期函数--监听页面卸载
@@ -128,7 +126,12 @@ Page({
     /**
  * 用户点击右上角分享
  */
-    onShareAppMessage: function () { }
-}
-
-)
+    onShareAppMessage: function (e) {
+        let blogObj = e.target.dataset.blog
+        return {
+            title: blogObj.content,
+            path: `/pages/blog-comment/blog-comment?blogId=${blogObj._id}`,
+            imageUrl: blogObj.imgs[0]
+        }
+    }
+})

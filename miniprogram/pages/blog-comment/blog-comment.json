@@ -1,3 +1,7 @@
 {
-  "usingComponents": {}
+    "usingComponents": {
+        "blog-list": "../../components/bolg-list/blog-list",
+        "blog-ctrl": "../../components/blog-ctrl/blog-ctrl"
+    },
+    "navigationBarTitleText": "详情"
 }
