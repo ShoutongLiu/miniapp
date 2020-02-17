@@ -7,7 +7,8 @@ Component({
      * 组件的属性列表
      */
     properties: {
-        blogId: String
+        blogId: String,
+        blog: Object
     },
 
     /**
@@ -69,20 +70,32 @@ Component({
                 });
                 return
             }
+            // 订阅消息
             wx.requestSubscribeMessage({
                 tmplIds: [tmplId],
-                success(res) {
-                    console.log(res);
-                },
-                file(res) {
-                    console.log(res);
-                },
-                complete: () => {
+                complete: (res) => {
+                    let value = content.length > 20 ? content.substring(0, 20) : content
+                    let time = format(new Date())
+                    if (res.pqwTjt4wlaU8WZgNLLcTQv9gOQPa5lxOi1yitNOcxng === 'accept') {
+                        // 推送订阅消息
+                        wx.cloud.callFunction({
+                            name: 'sendMsg',
+                            data: {
+                                content: value,
+                                blogId: this.properties.blogId,
+                                createTime: time,
+                                name: userInfo.nickName,
+                            }
+                        }).then(res => {
+                            console.log(res);
+                        })
+                    }
                     // 发表评论
                     wx.showLoading({
                         title: '发表中...',
                         mask: true
                     });
+
                     db.collection('comment').add({
                         data: {
                             content,
@@ -93,26 +106,13 @@ Component({
                         }
                     }).then(res => {
                         if (res._id) {
-                            let value = content.length > 20 ? content.substring(0, 20) : content
-                            let time = format(new Date())
-                            // 推送模板消息
-                            wx.cloud.callFunction({
-                                name: 'sendMsg',
-                                data: {
-                                    content: value,
-                                    blogId: this.properties.blogId,
-                                    createTime: time,
-                                    name: userInfo.nickName,
-                                }
-                            }).then(res => {
-                                console.log(res);
-                            })
-
                             wx.hideLoading();
                             this.setData({ modalShow: false, content: '' })
                             wx.showToast({
                                 title: '发表成功'
                             });
+                            // 父元素刷新页面评论
+                            this.triggerEvent('refreshComment')
                         }
                     })
                 }
