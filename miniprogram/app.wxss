@@ -1,1 +1,5 @@
 @import './style/icon.wxss';
+
+view {
+    box-sizing: border-box;
+}

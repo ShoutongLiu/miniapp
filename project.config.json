@@ -107,69 +107,56 @@
 					"id": -1,
 					"name": "pages/blogedit/blogedit",
 					"pathName": "pages/blogedit/blogedit",
+					"query": "",
 					"scene": null
 				},
 				{
 					"id": -1,
 					"name": "pages/blogedit/blogedit",
 					"pathName": "pages/blogedit/blogedit",
+					"query": "",
 					"scene": null
 				},
 				{
 					"id": -1,
 					"name": "pages/blogedit/blogedit",
 					"pathName": "pages/blogedit/blogedit",
+					"query": "",
 					"scene": null
 				},
 				{
 					"id": -1,
 					"name": "pages/blogedit/blogedit",
 					"pathName": "pages/blogedit/blogedit",
+					"query": "",
 					"scene": null
 				},
 				{
 					"id": -1,
 					"name": "pages/blogedit/blogedit",
 					"pathName": "pages/blogedit/blogedit",
+					"query": "",
 					"scene": null
 				},
 				{
 					"id": -1,
 					"name": "pages/blogedit/blogedit",
 					"pathName": "pages/blogedit/blogedit",
+					"query": "",
 					"scene": null
 				},
 				{
 					"id": -1,
 					"name": "pages/blogedit/blogedit",
 					"pathName": "pages/blogedit/blogedit",
+					"query": "",
 					"scene": null
 				},
 				{
 					"id": -1,
 					"name": "pages/blogedit/blogedit",
 					"pathName": "pages/blogedit/blogedit",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/blogedit/blogedit",
-					"pathName": "pages/blogedit/blogedit",
-					"query": "name=tom$avatar=245",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/blogedit/blogedit",
-					"pathName": "pages/blogedit/blogedit",
-					"query": "name=tom$avatar=245",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/blogedit/blogedit",
-					"pathName": "pages/blogedit/blogedit",
-					"query": "name=tom$avatar=245",
+					"query": "",
 					"scene": null
 				},
 				{
@@ -212,6 +199,41 @@
 					"name": "pages/blogedit/blogedit",
 					"pathName": "pages/blogedit/blogedit",
 					"query": "name=tom$avatar=245",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/blogedit/blogedit",
+					"pathName": "pages/blogedit/blogedit",
+					"query": "name=tom$avatar=245",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/blogedit/blogedit",
+					"pathName": "pages/blogedit/blogedit",
+					"query": "name=tom$avatar=245",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/blogedit/blogedit",
+					"pathName": "pages/blogedit/blogedit",
+					"query": "name=tom$avatar=245",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/profile/profile",
+					"pathName": "pages/profile/profile",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/play-history/play-history",
+					"pathName": "pages/play-history/play-history",
+					"query": "",
 					"scene": null
 				}
 			]

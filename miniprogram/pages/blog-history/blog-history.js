@@ -1,4 +1,5 @@
-import format from '../../utils/formatTime'
+const MAX_LIMIT = 10
+const db = wx.cloud.database()
 
 Page({
 
@@ -6,41 +7,38 @@ Page({
      * 页面的初始数据
      */
     data: {
-        blogDetail: {},
-        commentList: [],
-        blogId: ''
+        blogList: []
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        this.setData({ blogId: options.blogId })
-        this.getBlogDetail()
+        this.getListByminiProgram()
     },
 
-    getBlogDetail() {
+    // 通过小程序端获取数据库的数据
+    getListByminiProgram() {
         wx.showLoading({
+            title: '加载中',
             mask: true,
         });
-        wx.cloud.callFunction({
-            name: 'blog',
-            data: {
-                blogId: this.data.blogId,
-                $url: 'detail'
-            }
-        }).then(res => {
-            console.log(res);
-            const { detail, commentList } = res.result
-            let commArr = commentList.data
-            // 时间转换
-            for (let i = 0; i < commArr.length; i++) {
-                commArr[i].createTime = format(new Date(commArr[i].createTime))
-            }
-
-            this.setData({ blogDetail: detail[0], commentList: commArr })
-            wx.hideLoading();
-        })
+        db.collection('blog').skip(this.data.blogList.length).limit(MAX_LIMIT)
+            .orderBy('createTime', 'desc').get().then(res => {
+                console.log(res);
+                let _blogList = res.data
+                for (let i = 0; i < _blogList.length; i++) {
+                    _blogList[i].createTime = _blogList[i].createTime.toString()
+                }
+                this.setData({ blogList: this.data.blogList.concat(_blogList) })
+                wx.hideLoading();
+            })
+    },
+    // 跳转到详情
+    goDetail(e) {
+        wx.navigateTo({
+            url: `../blog-comment/blog-comment?blogId=${e.target.dataset.blogid}`,
+        });
     },
 
     /**
@@ -82,11 +80,12 @@ Page({
      * 页面上拉触底事件的处理函数
      */
     onReachBottom: function () {
-
+        this.getListByminiProgram()
     },
+
     /**
-    * 用户点击右上角分享
-    */
+     * 用户点击右上角分享
+     */
     onShareAppMessage: function (e) {
         const blog = e.target.dataset.blog
         return {

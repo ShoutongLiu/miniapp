@@ -1,5 +1,11 @@
 //app.js
 App({
+
+    globalData: {
+        playingId: -1,
+        openid: -1
+    },
+
     onLaunch: function () {
 
         if (!wx.cloud) {
@@ -12,15 +18,23 @@ App({
                 traceUser: true,
             })
         }
-
-        this.globalData = {
-            playingId: -1
-        }
+        this.getOpenId()
     },
     setPlayingId(musicId) {
         this.globalData.playingId = musicId
     },
     getPlayingId() {
         return this.globalData.playingId
+    },
+    getOpenId() {
+        wx.cloud.callFunction({
+            name: 'login'
+        }).then(res => {
+            const openid = res.result.openid
+            this.globalData.openid = openid
+            if (wx.getStorageSync(openid) === '') {
+                wx.setStorageSync(openid, []);
+            }
+        })
     }
 })

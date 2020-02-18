@@ -1,36 +1,32 @@
-// miniprogram/pages/profile/profile.js
+const app = getApp();
+
+
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-
+        historyList: []
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
-    onLoad: function (options) {
-
-    },
-    onTapQrCode() {
-        wx.showLoading({
-            title: '生成中',
-            mask: true,
-        });
-        wx.cloud.callFunction({
-            name: 'getQrCode'
-        }).then(res => {
-            console.log(res);
-            const fileId = res.result
-            wx.previewImage({
-                current: fileId,
-                urls: [fileId],
+    onLoad: function () {
+        const openid = app.globalData.openid
+        const historyArr = wx.getStorageSync(openid)
+        if (historyArr.length === 0) {
+            wx.showModal({
+                title: '播放历史为空',
+                showCancel: false,
             });
-            wx.hideLoading();
-        })
+        } else {
+            wx.setStorage({ key: 'musiclist', data: historyArr })
+            this.setData({ historyList: historyArr })
+        }
     },
+
     /**
      * 生命周期函数--监听页面初次渲染完成
      */

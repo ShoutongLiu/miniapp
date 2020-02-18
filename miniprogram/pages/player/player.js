@@ -72,6 +72,9 @@ Page({
                 backAudioManager.src = songData.data[0].url
                 backAudioManager.coverImgUrl = music.al.picUrl
                 backAudioManager.singer = music.ar[0].name
+
+                // 保存播放历史
+                this.savePlayHistory()
             }
             this.setData({ isPlaying: true })
             wx.hideLoading()
@@ -142,6 +145,27 @@ Page({
         this.setData({
             isPlaying: false
         })
+    },
+
+    // 保存播放历史
+    savePlayHistory() {
+        // 当前播放歌曲
+        const music = musiclist[playingIndex]
+        // openid
+        const openid = app.globalData.openid
+        const history = wx.getStorageSync(openid)
+        let bHave = false
+
+        for (let i = 0; i < history.length; i++) {
+            if (history[i].id === music.id) {
+                bHave = true
+                break
+            }
+        }
+        if (!bHave) {
+            history.unshift(music)
+            wx.setStorage({ key: openid, data: history })
+        }
     },
     /**
      * 生命周期函数--监听页面初次渲染完成

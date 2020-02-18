@@ -2,5 +2,6 @@
     "usingComponents": {
         "progress-bar": "../../components/progress-bar/progress-bar",
         "m-lyric": "../../components/lyric/lyric"
-    }
+    },
+    "disableScroll": true
 }

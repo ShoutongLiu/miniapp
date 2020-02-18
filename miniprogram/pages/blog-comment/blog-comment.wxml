@@ -22,5 +22,5 @@
     </view>
 </scroll-view>
 <view class="blog-ctrl">
-    <blog-ctrl blogId="{{blogDetail._id}}" bind:refreshComment="getBlogDetail" />
+    <blog-ctrl blogId="{{blogDetail._id}}" blog="{{blogDetail}}" bind:refreshComment="getBlogDetail" />
 </view>
